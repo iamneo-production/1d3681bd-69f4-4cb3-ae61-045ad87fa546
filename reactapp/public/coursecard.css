@@ -1,0 +1,78 @@
+.courseGrid {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.course-card {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.897);
+  border-radius: 10px;
+  box-shadow: 0px 2px 13px 1px rgba(128, 128, 128, 0.2);
+  width: 90vw;
+  height: auto;
+
+  justify-content: center;
+}
+.course-info-1,
+.course-info-2,
+.course-info-3 {
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 2px;
+}
+.course-info-1 {
+  flex-shrink: 0.9;
+}
+.course-info-1-elem {
+  display: flex;
+  justify-content: start;
+  margin: 7px;
+}
+.course-info-2 {
+  flex-basis: 140%;
+  flex-shrink: 0.7;
+}
+.course-info-2-elem {
+  display: flex;
+  justify-content: start;
+  margin: 7px;
+}
+
+.course-info-2-elem-span {
+  width: 50%;
+}
+.course-info-2-institute {
+  display: flex;
+  justify-content: flex-start;
+  margin: 7px;
+}
+.course-info-3 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.course-info-3-elem {
+}
+.btn {
+  background-color: #a40865;
+  color: #f8eff4;
+  width: 80px;
+  margin: 7px;
+  padding: 9.8px;
+  border-radius: 5px;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  box-shadow: 0px 0px 5px 1px rgba(128, 128, 128, 0.1);
+}
+.btn-lite {
+  background-color: #b3d7eb;
+
+  color: #414764;
+  width: 50px;
+  margin: 3px;
+  padding: 4px;
+  border-radius: 5px;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  box-shadow: 0px 0px 5px 1px rgba(128, 128, 128, 0.1);
+}

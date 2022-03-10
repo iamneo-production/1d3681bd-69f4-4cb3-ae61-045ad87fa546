@@ -1,0 +1,43 @@
+.institute-container {
+  border: 1px solid rgb(179, 170, 170);
+  display: grid;
+  justify-content: center;
+  grid-template-columns: auto;
+  padding: 30px;
+}
+.institute-card {
+  background-color: rgba(245, 228, 238, 0.856);
+  display: grid;
+  padding: 10px;
+  justify-content: stretch;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: 0px 0px 5px 0px rgba(141, 138, 138, 0.171);
+}
+.institute-content {
+  text-align: center;
+  padding: 50px;
+  margin: 5px;
+}
+.institute-btn-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.institute-btn {
+  background-color: #d6479300;
+  display: flex;
+  color: rgba(245, 17, 17, 0.6);
+  width: auto;
+  align-items: center;
+  margin: 7px;
+  padding: 9.8px;
+  border-radius: 5px;
+  border: 1px solid rgba(245, 17, 17, 0.6);
+}
+.institute-btn-view {
+  color: rgba(17, 97, 245, 0.815);
+  border: 1px solid rgba(17, 97, 245, 0.815);
+}
