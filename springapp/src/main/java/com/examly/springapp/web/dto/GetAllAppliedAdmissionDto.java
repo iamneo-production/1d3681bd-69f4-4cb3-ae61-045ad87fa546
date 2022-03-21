@@ -1,12 +1,6 @@
 package com.examly.springapp.web.dto;
 
-import com.examly.springapp.model.Courses;
-import com.examly.springapp.model.Institute;
-import com.examly.springapp.model.Student;
-
-import javax.validation.constraints.Email;
-
-public class GetAllAppliedCoursesDto {
+public class GetAllAppliedAdmissionDto {
     //All Student field
     private long studentId;
     private boolean accepted;
@@ -30,10 +24,10 @@ public class GetAllAppliedCoursesDto {
     private String instituteMobile;
     private int nirfRank;
 
-    public GetAllAppliedCoursesDto() {
+    public GetAllAppliedAdmissionDto() {
     }
 
-    public GetAllAppliedCoursesDto(long studentId, boolean accepted, boolean denied, long courseId, String courseName, String courseDescription, String courseDuration, String courseTiming, String courseStudentCount, String courseAcademicYear, String courseRequiredPercentage, String instituteName, String instituteDescription, String instituteCity, String instituteState, String instituteEmail, String instituteMobile, int nirfRank) {
+    public GetAllAppliedAdmissionDto(long studentId, boolean accepted, boolean denied, long courseId, String courseName, String courseDescription, String courseDuration, String courseTiming, String courseStudentCount, String courseAcademicYear, String courseRequiredPercentage, String instituteName, String instituteDescription, String instituteCity, String instituteState, String instituteEmail, String instituteMobile, int nirfRank) {
         this.studentId = studentId;
         this.accepted = accepted;
         this.denied = denied;

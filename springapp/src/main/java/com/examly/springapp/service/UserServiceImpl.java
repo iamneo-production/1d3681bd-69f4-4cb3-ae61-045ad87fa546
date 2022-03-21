@@ -1,17 +1,3 @@
-package com.examly.springapp.service;
-
-import com.examly.springapp.model.Role;
-import com.examly.springapp.model.User;
-import com.examly.springapp.repository.UserRepository;
-import com.examly.springapp.web.dto.UserRegistrationDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -26,7 +12,7 @@ public class UserServiceImpl implements UserService{
     private BCryptPasswordEncoder passwordEncoder;
     @Override
     public User save(UserRegistrationDto userRegistrationDto) {
-        User user =new User(userRegistrationDto.getUserEmail(),userRegistrationDto.getUserName(),
+        User user =new User(userRegistrationDto.getEmail(),userRegistrationDto.getUserName(),
                 userRegistrationDto.getUserMobileNumber(),passwordEncoder.encode(userRegistrationDto.getUserPassword())
                 , Arrays.asList(new Role("ROLE_student")));
         try {return userRepository.save(user);}

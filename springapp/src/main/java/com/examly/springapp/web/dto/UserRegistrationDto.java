@@ -8,19 +8,24 @@ public class UserRegistrationDto {
     private String userName;
     private String userMobileNumber;
     private String userPassword;
+    private String userRetypePassword;
 
-    public UserRegistrationDto(String email, String userName, String userMobileNumber, String userPassword) {
+    public UserRegistrationDto() {
+    }
+
+    public UserRegistrationDto(String email, String userName, String userMobileNumber, String userPassword, String userRetypePassword) {
         this.email = email;
         this.userName = userName;
         this.userMobileNumber = userMobileNumber;
         this.userPassword = userPassword;
+        this.userRetypePassword = userRetypePassword;
     }
 
-    public String getUserEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setUserEmail(String userEmail) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -46,5 +51,13 @@ public class UserRegistrationDto {
 
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
+    }
+
+    public String getUserRetypePassword() {
+        return userRetypePassword;
+    }
+
+    public void setUserRetypePassword(String userRetypePassword) {
+        this.userRetypePassword = userRetypePassword;
     }
 }

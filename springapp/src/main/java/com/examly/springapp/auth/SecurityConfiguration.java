@@ -1,3 +1,4 @@
+
 package com.examly.springapp.auth;
 
 import com.examly.springapp.service.AdminService;
@@ -99,6 +100,7 @@ public class SecurityConfiguration {
 
         @Override
         protected void configure(AuthenticationManagerBuilder amb) throws Exception {
+
             amb.authenticationProvider(daoAuthenticationProvider());
         }
         @Override

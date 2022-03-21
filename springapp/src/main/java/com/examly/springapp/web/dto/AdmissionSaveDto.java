@@ -1,6 +1,6 @@
 package com.examly.springapp.web.dto;
 
-public class StudentSaveDto {
+public class AdmissionSaveDto {
 
 
     private long courseId;
@@ -16,10 +16,10 @@ public class StudentSaveDto {
     private long hscMarks;
     private String eligibility;
 
-    public StudentSaveDto() {
+    public AdmissionSaveDto() {
     }
 
-    public StudentSaveDto( long courseId, String firstName, String lastName, String email, String mobile, String gender, String fatherName, String motherName, String age, String hscName, long hscMarks, String eligibility) {
+    public AdmissionSaveDto(long courseId, String firstName, String lastName, String email, String mobile, String gender, String fatherName, String motherName, String age, String hscName, long hscMarks, String eligibility) {
 
         this.courseId = courseId;
         this.firstName = firstName;

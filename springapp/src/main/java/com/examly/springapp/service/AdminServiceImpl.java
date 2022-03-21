@@ -1,10 +1,11 @@
 package com.examly.springapp.service;
 
-import com.examly.springapp.model.Admin;
+
 import com.examly.springapp.model.Role;
 import com.examly.springapp.model.User;
-import com.examly.springapp.repository.AdminRepository;
-import com.examly.springapp.web.dto.AdminRegistrationDto;
+
+import com.examly.springapp.repository.UserRepository;
+
 import com.examly.springapp.web.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,16 +22,16 @@ import java.util.stream.Collectors;
 public class AdminServiceImpl implements AdminService {
 
     @Autowired
-    AdminRepository adminRepository;
+    UserRepository userRepository;
     @Autowired
     BCryptPasswordEncoder encoder;
 
 
-    public Admin save(AdminRegistrationDto adminRegistrationDto) {
-        Admin admin =new Admin(adminRegistrationDto.getEmail(),adminRegistrationDto.getName(),
-                encoder.encode(adminRegistrationDto.getPassword())
+    public User save(UserRegistrationDto userRegistrationDto) {
+        User admin =new User(userRegistrationDto.getEmail(),userRegistrationDto.getUserName(),
+                userRegistrationDto.getUserMobileNumber(), encoder.encode(userRegistrationDto.getUserPassword())
                 , Arrays.asList(new Role("ROLE_admin")));
-        try {return adminRepository.save(admin);}
+        try {return userRepository.save(admin);}
         catch(Exception e){
             System.out.println("Exception thrown during Saving Admin : "+e);
             return null;
@@ -41,12 +42,12 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Admin admin = adminRepository.findByEmail(username);
+        User admin = userRepository.findByEmail(username);
 
         if(admin == null) throw new UsernameNotFoundException("Invalid username and password");
-            for(Role r:admin.getAdminroles())System.out.println(r.getName());
+            for(Role r:admin.getRoles())System.out.println(r.getName());
 
-        return new org.springframework.security.core.userdetails.User(admin.getEmail(),admin.getAdminPassword(),authorities(admin.getAdminroles()));
+        return new org.springframework.security.core.userdetails.User(admin.getUserEmail(),admin.getUserPassword(),authorities(admin.getRoles()));
 
     }
 

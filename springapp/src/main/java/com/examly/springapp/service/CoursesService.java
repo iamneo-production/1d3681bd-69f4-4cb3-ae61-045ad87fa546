@@ -1,5 +1,3 @@
-package com.examly.springapp.service;
-
 import com.examly.springapp.web.dto.CourseSaveDto;
 import com.examly.springapp.web.dto.GetAllCoursesAdminDto;
 import com.examly.springapp.web.dto.GetAllCoursesDto;
