@@ -1,0 +1,9 @@
+.settings/org.eclipse.jdt.apt.core.prefs
+.settings/org.eclipse.jdt.core.prefs
+bin/README.md
+bin/.github/workflows/build.yml
+springapp/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+springapp/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+.classpath
+.project
+done
