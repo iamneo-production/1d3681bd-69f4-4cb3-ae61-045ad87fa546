@@ -25,6 +25,7 @@ import { sizeWidth } from '@mui/system';
 
 
 import{BrowserRouter as Router, Routes,Route,Link,Outlet,} from "react-router-dom";
+import { NotificationImportant } from "@mui/icons-material";
 
 
 function Header() {
@@ -69,6 +70,7 @@ function Header() {
           
           onClick={()=>{
             localStorage.removeItem('user');
+            localStorage.removeItem('admin');
             window.location.href="/Login"
         }}
 
@@ -76,8 +78,10 @@ function Header() {
           
         </div>
         <div className="nav-profile">
-          <Account sx={{ fontSize: 35 }} />
-          <div>Profile</div>
+          {/* <Account sx={{ fontSize: 35 }} /> */}
+
+          <NotificationImportant   sx={{ fontSize: 35 }} />
+          <div>Notification</div>
         </div>
       </div>
     </header>
@@ -95,7 +99,7 @@ function Header() {
            
             
             <grid item xs={4} md={4} style={gridheading}>
-            <Link to="/"  style={{color:"white", textDecoration:"none"} } underline='none'>
+            <Link to="/admin/ViewInstitute"  style={{color:"white", textDecoration:"none"} } underline='none'>
               <IconButton className="options-below-nav-items options-institute" edge="start" ariel-label="menu" sx={{mr:2}}>Institute</IconButton>
               </Link>
               </grid>

@@ -92,7 +92,7 @@ function HomePage(){
                 </Grid>
             
                 <div className='btnadd'>
-<Link   to="/admin/addAcademy" style={{color:"white",textDecoration:"none"}} target={"_blank"}>
+<Link   to="/admin/addAcademy" style={{color:"white",textDecoration:"none"}} >
 <Button  variant="contained" style={{margin:"5px"}} startIcon={<Add />} color="primary">Add Institute </Button> 
   </Link>
   </div>

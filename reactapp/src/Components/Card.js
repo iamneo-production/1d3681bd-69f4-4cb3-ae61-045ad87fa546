@@ -17,13 +17,13 @@ function Card(props) {
     <h4><b>R.k Institute of Technology</b></h4> 
     <p>Premier institute in engineering</p> 
   </div>
-  <div> <Button style={{marginLeft:"60px",marginBottom:"10px"}} startIcon={<Reviews/>}>Reviews</Button></div>
+  <div> <Button style={{marginLeft:"60px",marginBottom:"10px",zIndex:-1}} startIcon={<Reviews/>}>Reviews</Button></div>
   <div>
   <Link to="/admin/Edit"  style={{color:"white", textDecoration:"none"} } underline='none'>
-      <Button startIcon={<Edit/>} variant="outlined">Edit</Button>
+      <Button  style={{zIndex:-1}} startIcon={<Edit/>} variant="outlined">Edit</Button>
       </Link>
      
-      <Button startIcon={<Delete/>} style={{marginLeft:"30px"}} variant="outlined">Delete</Button>
+      <Button startIcon={<Delete/>}  style={{marginLeft:"30px",zIndex:-1}} variant="outlined">Delete</Button>
   </div>
 </div>
 
