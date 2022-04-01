@@ -21,21 +21,26 @@ import StudentInstitute from './UserPages/StudentInstitute';
 
 
 
-import{BrowserRouter as Router, Routes,Route,} from "react-router-dom";
+import{BrowserRouter as Router, Routes,Route,useNavigate, useParams} from "react-router-dom";
 import AddCourse from './AdminPages/AddCourse';
 import HeaderStudent from './Components/HeaderStudent';
 import Course from './UserPages/Course';
 import EnrollPage from './UserPages/EnrollPage';
-import Login from './Pages/Login';
-import Register from './Pages/Register';
+import LoginForm from './Pages/LoginForm';
+
+import Regis from './Pages/regis';
 import InstituteCard from './Components/InstituteCard';
 import EditAcademy from './AdminPages/EditAcademy';
 import Card from './Components/Card';
 import Review from './UserPages/Review';
 import EnrolledCourse from './UserPages/EnrolledCourse';
+import { Component } from 'react';
+import  PrivateRoute from './Pages/Private.js';
+import  AdminPrivateRoute from './Pages/adminPrivate';
 
-
-function App() {
+function App(props) {
+  let {id}=useParams();
+  
   return (
     <div>
       {/* <Footer /> */}
@@ -68,23 +73,34 @@ function App() {
       <Router>
       {/* <Header /> */}
         <Routes>
-        <Route path='/Login' exact element={ <Login/> } />
+        <Route path='/Login' exact element={ <LoginForm/> } />
        
-          <Route path='/Register' exact element={ <Register/> } />
-          <Route path="/" element={<HomePage/>}>
+          <Route path='/Register' exact element={ <Regis/> } />
+         {/* <Route path="/" element={<HomePage/>}/>
+         
+         < Route path="user/HomepageStudent"  element={<PrivateRoute/>}>
+         */}
 
           
-          </Route>
+< Route path="/"  element={<PrivateRoute/>}>
 
-          <Route path="user/HomepageStudent" element={<StudentInstitute/>}/>
+          < Route path="user/HomepageStudent"  element={<StudentInstitute/>}/>
+          
+
           <Route path="user/ViewCourse" element={<Course/>}/>
           <Route path="user/EnrollCourse" element={<EnrollPage/>}/>
           <Route path="user/EnrolledCourses" element={<EnrolledCourse/>}/>
 
           <Route path="user/Review" element={<Review/>}/>
-          <Route path="admin/DisplayUser" element={<DisplayUser />} > 
-           </Route>
 
+          </Route>
+         
+          
+          < Route path="/"  element={<AdminPrivateRoute/>}>
+          < Route path="admin/ViewInstitute"  element={<HomePage/>}/>
+
+          < Route path="admin/DisplayUser"  element={<DisplayUser/>} /> 
+           
            <Route path="admin/addAcademy" element={<AddAcademy />} > 
            </Route>
            <Route path="admin/ViewCourse" element={<ViewCourse />} > 
@@ -92,26 +108,31 @@ function App() {
            <Route path="admin/AddUser" element={<AddUser />} > 
            </Route>
            
-            <Route path="admin/AddCourses" element={<AddUser/>} >
+            <Route path="admin/AddCourses" element={<AddCourse/>} >
             {/* <Route path="/adduser" element={<AddUser/>} ></Route> */}
             
             </Route>
             <Route path="admin/Edit" element={<EditAcademy /> }/>
             <Route path="admin/EditCourses" element={<EditCourse />} > 
            </Route>
-           <Route path="admin/EditUser" element={<EditUser />} > 
+           <Route path="admin/EditUser/:id" 
+           element={ <EditUser/>} > 
+         
            </Route>
 
+           </ Route>
            
-           
-            <Route path = "*" element = {<ErrorPage/>}></Route>
-           
+            <Route path = "*" >
+            </Route>
+            
           
-        </Routes>
-        <Footer />
-        </Router>
+        
+      {/*  <Footer /> */}
+
+      </Routes>
+      </Router>
      
- 
+      
    
     </div>
   );
