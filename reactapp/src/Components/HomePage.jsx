@@ -1,25 +1,25 @@
-import Footer from './Footer';
-import Header from './Header';
-import InstituteCard from './InstituteCard';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
-import "./HomePage.css";
-import {Link,Outlet,} from  "react-router-dom";
-import Add from '@mui/icons-material/Add';
-import CourseSearchFilter from './CourseSearchFilter';
-import Card from './Card';
-import Course from '../UserPages/Course';
+import Footer from './Footer'; 
+import Header from './Header'; 
+import InstituteCard from './InstituteCard'; 
+import Button from '@mui/material/Button'; 
+import Grid from '@mui/material/Grid'; 
+import "./HomePage.css"; 
+import {Link,Outlet,} from  "react-router-dom"; 
+import Add from '@mui/icons-material/Add'; 
+import CourseSearchFilter from './CourseSearchFilter'; 
+import Card from './Card'; 
+import Course from '../UserPages/Course'; 
 
-function HomePage(){
-    let grida={
-      width:"350px",
-      height:"40px",
-      position:"relative",
-      left:"200px"
+function HomePage(){ 
+    let grida={  
+      width:"350px",  
+      height:"40px",  
+      position:"relative",  
+      left:"200px"  
 
-    }
+    }  
 
-    let search={
+    let search={ 
         marginTop:"40px",
         marginBottom:"60px",
         paddingBottom:"60px",
