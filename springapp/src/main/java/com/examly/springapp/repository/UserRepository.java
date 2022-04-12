@@ -12,10 +12,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
      User findByUserId(long id);
 
-     @Modifying
-     @Transactional
-     @Query("")
-     editUser(long id);
+    
 
 
 }
