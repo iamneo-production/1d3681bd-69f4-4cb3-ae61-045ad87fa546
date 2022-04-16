@@ -1,4 +1,4 @@
-
+import {useState} from 'react'
 import './App.css';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
@@ -17,11 +17,7 @@ import EditCourse from './AdminPages/EditCourse';
 // import AddCourse from './Pages/AddCourse';
 import ViewCourse from './AdminPages/ViewCourse';
 import StudentInstitute from './UserPages/StudentInstitute';
-
-
-
-
-import{BrowserRouter as Router, Routes,Route,useNavigate, useParams} from "react-router-dom";
+import{BrowserRouter as Router, Routes,Route,useNavigate, useParams, Outlet, Navigate} from "react-router-dom";
 import AddCourse from './AdminPages/AddCourse';
 import HeaderStudent from './Components/HeaderStudent';
 import Course from './UserPages/Course';
@@ -29,7 +25,7 @@ import EnrollPage from './UserPages/EnrollPage';
 import LoginForm from './Pages/LoginForm';
 
 import Regis from './Pages/regis';
-import InstituteCard from './Components/InstituteCard';
+// import InstituteCard from './Components/InstituteCard';
 import EditAcademy from './AdminPages/EditAcademy';
 import Card from './Components/Card';
 import Review from './UserPages/Review';
@@ -37,9 +33,16 @@ import EnrolledCourse from './UserPages/EnrolledCourse';
 import { Component } from 'react';
 import  PrivateRoute from './Pages/Private.js';
 import  AdminPrivateRoute from './Pages/adminPrivate';
-
+import ReviewAdmin from './AdminPages/ReviewAdmin';
+import SuccessEnroll from './UserPages/SuccessEnroll';
+import ReviewForm from './UserPages/ReviewForm';
+import UserLogin from './Pages/UserLogin';
+import UserRegis from './Pages/Userregis';
+import Redirect from './Pages/Redirect';
 function App(props) {
   let {id}=useParams();
+  
+ const value1="http://localhost:8080/"
   
   return (
     <div>
@@ -70,12 +73,16 @@ function App(props) {
        {/* <Card/> */}
        {/* <Card/> */}
        {/* <Review/> */}
+       {/* <SuccessEnroll/> */}
+       {/* <ReviewForm/> */}
       <Router>
       {/* <Header /> */}
         <Routes>
-        <Route path='/Login' exact element={ <LoginForm/> } />
+        
+        <Route path='/Login' exact element={ <LoginForm value1={value1} /> } />
+        
        
-          <Route path='/Register' exact element={ <Regis/> } />
+          <Route path='/Register' exact element={ <Regis value1={value1}/> } />
          {/* <Route path="/" element={<HomePage/>}/>
          
          < Route path="user/HomepageStudent"  element={<PrivateRoute/>}>
@@ -84,54 +91,64 @@ function App(props) {
           
 < Route path="/"  element={<PrivateRoute/>}>
 
-          < Route path="user/HomepageStudent"  element={<StudentInstitute/>}/>
+          < Route path="user/HomepageStudent"  element={<StudentInstitute value1={value1}/>}/>
           
 
-          <Route path="user/ViewCourse" element={<Course/>}/>
-          <Route path="user/EnrollCourse" element={<EnrollPage/>}/>
-          <Route path="user/EnrolledCourses" element={<EnrolledCourse/>}/>
+          <Route path="user/ViewCourse" element={<Course value1={value1}/>}/>
+          <Route path="user/EnrollCourse" element={<EnrollPage value1={value1}/>}/>
+           <Route path="user/EnrolledCourses" element={<EnrolledCourse value1={value1}/>}/> 
 
-          <Route path="user/Review" element={<Review/>}/>
+          <Route path="user/Review" element={<Review value1={value1}/>}/>
+          <Route path="user/Success" element={<SuccessEnroll value1={value1}/>}/>
+          <Route path="user/ReviewForm" element={<ReviewForm value1={value1}/>}/>
 
           </Route>
          
           
-          < Route path="/"  element={<AdminPrivateRoute/>}>
-          < Route path="admin/ViewInstitute"  element={<HomePage/>}/>
+          < Route path="/"  element={<AdminPrivateRoute />}>
+          < Route path="admin/ViewInstitute"  element={<HomePage value1={value1}/>}/>
 
-          < Route path="admin/DisplayUser"  element={<DisplayUser/>} /> 
+          < Route path="admin/DisplayUser"  element={<DisplayUser value1={value1}/>} /> 
            
-           <Route path="admin/addAcademy" element={<AddAcademy />} > 
+           <Route path="admin/addAcademy" element={<AddAcademy value1={value1} />} > 
            </Route>
-           <Route path="admin/ViewCourse" element={<ViewCourse />} > 
+           <Route path="admin/ViewCourse" element={<ViewCourse value1={value1} />} > 
            </Route>
-           <Route path="admin/AddUser" element={<AddUser />} > 
-           </Route>
+           <Route path="admin/AddUser" element={<AddUser value1={value1} />} > 
+
            
-            <Route path="admin/AddCourses" element={<AddCourse/>} >
+           </Route>
+           <Route path="admin/Reviews" element={<ReviewAdmin value1={value1}/>} > 
+           </Route>
+
+           
+            <Route path="admin/AddCourses" element={<AddCourse value1={value1}/>} >
             {/* <Route path="/adduser" element={<AddUser/>} ></Route> */}
             
             </Route>
-            <Route path="admin/Edit" element={<EditAcademy /> }/>
-            <Route path="admin/EditCourses" element={<EditCourse />} > 
+            <Route path="admin/Edit" element={<EditAcademy value1={value1}/> }/>
+            <Route path="admin/EditCourses" element={<EditCourse value1={value1} />} > 
            </Route>
            <Route path="admin/EditUser/:id" 
-           element={ <EditUser/>} > 
+           element={ <EditUser value1={value1}/>} > 
          
            </Route>
 
            </ Route>
            
-            <Route path = "*" >
-            </Route>
-            
           
+            
+           <Route path = "*"  element={<Redirect/>}>
+              
+              </Route>
         
-      {/*  <Footer /> */}
+       
 
       </Routes>
+      <Footer /> 
+
       </Router>
-     
+    
       
    
     </div>
@@ -139,3 +156,8 @@ function App(props) {
 }
 
 export default App;
+
+
+
+
+
