@@ -79,9 +79,9 @@ function Header() {
         </div>
         <div className="nav-profile">
           {/* <Account sx={{ fontSize: 35 }} /> */}
-
+         
           <NotificationImportant   sx={{ fontSize: 35 }} />
-          <div>Notification</div>
+          <div>User Id:{localStorage.getItem('admin') }</div> 
         </div>
       </div>
     </header>
@@ -141,7 +141,7 @@ function Header() {
        
         
       </div>
-      <Outlet />
+      {/* <Outlet /> */}
       
         </div>
     );
