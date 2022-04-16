@@ -17,6 +17,6 @@ const PrivateRoute = () => {
      // determine if authorized, from context or however you're doing it
    // alert(auth.isAuthenticated())
    
-    return useAuth() ? <Outlet /> : <Navigate to="/Login" />;
+    return useAuth() ? <Outlet /> : <Navigate to="/UserLogin" />;
 }
 export default PrivateRoute
