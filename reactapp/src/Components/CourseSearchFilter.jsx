@@ -20,10 +20,10 @@ function CourseSearchFilter(props) {
     </div>
     <div className="course-filter">
     <div className='filter1'>Filter By</div>
-      
+      {/*
       <Button variant="outlined" className="course-filter-elem"> StudentId</Button>
-      <Button variant="outlined" className="course-filter-elem"> Student Name</Button>
-      <Button variant="outlined" className="course-filter-elem"> Course</Button>
+  <Button variant="outlined" className="course-filter-elem"> Student Name</Button> */}
+      <Button variant="outlined" className="course-filter-elem"> Student Course</Button>
    
     </div>
   </div>
