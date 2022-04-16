@@ -50,9 +50,13 @@ function HeaderStudent(props) {
                   
                 </div>
                 <div className="nav-profile">
-                  <Account sx={{ fontSize: 35 }} />
-                  <div>Profile</div>
-                </div>
+               
+                  <Account sx={{ fontSize: 35 }}
+                  /> 
+                  
+          <div>User Id:{localStorage.getItem('user') }</div>
+               
+              </div>
               </div>
             </header>
         
@@ -84,18 +88,29 @@ function HeaderStudent(props) {
                       </Link>
                       </grid>
 
-                      <grid item xs={4} md={4}   className="grid1">
-                    <Link to="/user/EnrolledCourses"  style={{color:"white", textDecoration:"none"} } underline='none'>
-                      <IconButton className="options-below-nav-items options-courses" id="userEnrolledCourses" edge="start"  ariel-label="menu" sx={{mr:2}}>Learning</IconButton>
+                       {/* <grid item xs={4} md={4}   className="grid1">
+                    <Link to="/user/ReviewForm"  style={{color:"white", textDecoration:"none"} } underline='none'>
+                      <IconButton className="options-below-nav-items options-courses" id="userEnrolledCourses" edge="start"  ariel-label="menu" sx={{mr:2}}>AddReview</IconButton>
                       </Link>
-                      </grid>
-                    {/* <grid item xs={4} md={4} className="grid1" >
-                   
-                        <IconButton className="options-below-nav-items options-student" edge="start"   ariel-label="menu" sx={{mr:2}}>Student
-                        </IconButton>
-                      
-                    </grid> */}
-                  
+                      </grid>  */}
+                    
+                    <grid item xs={4} md={4} className="grid1">
+                <Link
+                  to="/user/EnrolledCourses"
+                  style={{ color: "white", textDecoration: "none" }}
+                  underline="none"
+                >
+                  <IconButton
+                    className="options-below-nav-items options-courses"
+                    id="userEnrolledCourses"
+                    edge="start"
+                    ariel-label="menu"
+                    sx={{ mr: 2 }}
+                  >
+                    Enrolled Courses
+                  </IconButton>
+                </Link>
+              </grid>
                    
                    
         
