@@ -6,7 +6,7 @@ import { padding } from '@mui/system';
 import{BrowserRouter as Router, Routes,Route,Link,Outlet,} from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function EditUser(props){
+function EditUser(value1){
     let row1={
         marginTop:"15px",
         padding:"10px",
@@ -107,7 +107,7 @@ const[id,setid]=useState('')
 // }
 console.warn("props",id)
 useEffect(async()=>{
-    let result=await fetch("http://localhost:8080/UserModel"+id)
+    let result=await fetch(value1.value1+"UserModel"+id)
     result=await result.json();
     setData(result)
     setName(result.name)
@@ -123,7 +123,7 @@ function editProduct(id)
    formData.append('email',email)
    formData.append('mobileNumber',mobileNumber)
    formData.append('password',password)
-   let result= fetch("http://localhost:8080/UserModel"+id,{
+   let result= fetch(value1.value1+"UserModel"+id,{
        method:'POST',
        body:formData
    });

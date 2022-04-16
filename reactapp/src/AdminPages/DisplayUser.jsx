@@ -1,5 +1,5 @@
 import Header from'../Components/Header';
-import RowView from'./RowView';
+// import RowView from'./RowView';
 import Button from '@mui/material/Button';
 import { useState,React,useEffect } from "react";
 
@@ -29,67 +29,82 @@ import {Table,TableHead,TableRow,TableBody} from '@mui/material';
 
 
 
-const DisplayUser=(props)=>{
+const DisplayUser=(value1)=>{
 
+
+
+  const [data,setData]=useState([]);
+
+  useEffect(()=>{
+   getadmission();
+  },[]);
+  
+  function getadmission(){
+    fetch(value1.value1+"admin/getAllAdmissionRequests")
+    .then((response)=>response.json())
+    .then((p) => setData(p)
+         
+    );
+  }
   
 
 
 
-  const[users,setUser]=useState('')
-  const[name,setName]=useState('')
-  const[mobileNumber,setMobile]=useState('')
+//   const[users,setUser]=useState('')
+//   const[name,setName]=useState('')
+//   const[mobileNumber,setMobile]=useState('')
   
-  const[password,setPassword]=useState('')
-  const[email,setEmail]=useState('')
-  const[id,setid]=useState('')
+//   const[password,setPassword]=useState('')
+//   const[email,setEmail]=useState('')
+//   const[id,setid]=useState('')
 
 
 
-const [data,setData]=useState([]);
+// const [data,setData]=useState([]);
 
-useEffect(()=>{
- getusers();
-},[]);
+// useEffect(()=>{
+//  getusers();
+// },[]);
 
-function getusers(){
-  fetch("http://localhost:8080/UserModel")
-  .then((response)=>response.json())
-  .then((p) => {setData(p)
-  setName(p[0].name)
-  setEmail(p[0].email)
-  setMobile(p[0].mobileNumber)
-  setid(p[0].id)
-  setPassword(p[0].password)
-  }     
-  );
-}
+// function getusers(){
+//   fetch("http://localhost:8080/UserModel")
+//   .then((response)=>response.json())
+//   .then((p) => {setData(p)
+//   setName(p[0].name)
+//   setEmail(p[0].email)
+//   setMobile(p[0].mobileNumber)
+//   setid(p[0].id)
+//   setPassword(p[0].password)
+//   }     
+//   );
+// }
 
 
-function deleteUser(id)
+function deleteadmission(admissionId)
 {
   // alert(id)
-  fetch(`http://localhost:8080/UserModel/${id}`,{
+  fetch(value1.value1+`admin/deleteAdmission?admissionId=${admissionId}`,{
     method:'DELETE'
   }).then((response)=>{
     response.json().then((resp)=>{
       console.warn()
-      getusers();
+      getadmission();
     })
      
   
   })
 }
 
-function selectUser(id)
-{
-console.alert("function called",users[id-1])
-// let item=users[id-1]
-// setName(item.name)
-// setEmail(item.email)
-// setMobile(item.mobileNumber)
-// setid(item.id)
-// setPassword(item.password)
-}
+// function selectUser(id)
+// {
+// console.alert("function called",users[id-1])
+// // let item=users[id-1]
+// // setName(item.name)
+// // setEmail(item.email)
+// // setMobile(item.mobileNumber)
+// // setid(item.id)
+// // setPassword(item.password)
+// }
 
 
 
@@ -131,48 +146,57 @@ console.alert("function called",users[id-1])
  <thead>
     <tr>
    
-        {/* <th value={id} onChnage={e =>setId(e.target.value)}> */}
-        {/* {data.map((item)=>{
-          return (
-          <td key={item.id}>{item.name}</td> */}
-          {/* // <td></td>
-          // <th key={item.id}>{item.email}</th> */}
-          
-          {/* );
-        })} */}
-          {/* StudentID</th> */}
-          <th>StudentID</th>
-        <th>StudentName</th>
-        <th>EnrolledCourse</th>
-        <th>mobile no</th>
+        <th>courseId</th>
+        <th>name</th>
+        <th>email</th>
+        <th>mobileNo</th>
+        <th>gender</th>
+        <th>fatherName</th>
+        <th>motherName</th>
+        <th>hscName</th>
+        <th>hscMarks</th>
+        {/* <th>Address</th> */}
         <th>Actions</th>
+
     </tr>
  </thead>
  <tbody>
- {/* {data.map((item)=>{
-          return ( */}
+ 
 
 
 {data.map(datas=>(
 
-<tr key={datas.id}>
-  <td>{datas.id}</td>
-  <td>{datas.name} </td>
+<tr
+ key={datas.admissionId}
+ >
+  {/* <td>{datas.userId}</td> */}
+  <td>{datas.courseId} </td>
+  <td>{datas.firstName}  {datas.lastName}</td>
   <td>{datas.email}</td>
-  <td>{datas.mobileNumber}</td>
+  <td>{datas.mobile}</td>
+  <td>{datas.gender}</td>
+  <td>{datas.fatherName}</td>
+  <td>{datas.motherName}</td>
+  <td>{datas.hscName}</td>
+  <td>{datas.hscMarks}</td>
+  {/* <td>{datas.houseNumber}  {datas.streetNumber} {datas.areaName} {datas.state} {datas.pincode} , {datas.nationality}</td> */}
   <td>     
-        <Link   to={"/admin/EditUser/"+datas.id} style={{color:"white",textDecoration:"none"}}  >
-        <button className='zindex'  onClick={()=>selectUser(datas.id)} variant="contained" style={{margin:"5px",backgroundColor:"blue",color:"white",zIndex:-1}} endIcon={<Edit />} color="primary">Update/View </button>
+        <Link   to={"/admin/EditUser/"} style={{color:"white",textDecoration:"none"}}  >
+        <button className='zindex' 
+        //  onClick={()=>selectUser(datas.id)}
+          variant="contained" style={{margin:"5px",backgroundColor:"blue",color:"white",zIndex:-1}} endIcon={<Edit />} color="primary">Update/View </button>
         </Link>                                   
        
-        <button className='zindex' onClick={()=>deleteUser(datas.id)} variant="contained" style={{margin:"5px",backgroundColor:"red",color:"white",zIndex:-1}} color="error" endIcon={<Delete />}  >Delete</button>                                         
+        <button className='zindex' 
+        onClick={()=>deleteadmission(datas.admissionId)} 
+        variant="contained" style={{margin:"5px",backgroundColor:"red",color:"white",zIndex:-1}} color="error" endIcon={<Delete />}  >Delete</button>                                         
         </td>
 
   
   </tr>
 
 //  <li></li>
-))}
+ ))} 
 
          
       {/* <tr > */}
