@@ -2,7 +2,7 @@ import { Button, Card } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import HeaderStudent from '../Components/HeaderStudent';
-import "./SuccessEnroll.css"
+
 
 function SuccessEnroll(value1) {
    
