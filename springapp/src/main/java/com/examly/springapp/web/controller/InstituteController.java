@@ -4,7 +4,7 @@ import com.examly.springapp.constants.Constants;
 import com.examly.springapp.model.Institute;
 import com.examly.springapp.service.InstituteService;
 import com.examly.springapp.web.dto.InstituteSaveDto;
-
+import javax.validation.Valid;
 import exception.ResourceNotFound;
 
 
@@ -20,7 +20,7 @@ public class InstituteController {
 
     @PostMapping(Constants.ADD_INSTITUTE_URL_MAPPING)
     @ResponseBody
-    public String addInstitute(@RequestBody InstituteSaveDto instituteSaveDto){
+    public String addInstitute(@Valid @RequestBody InstituteSaveDto instituteSaveDto){
     	try {
         instituteService.saveInstitute(instituteSaveDto);
         return Constants.INSTITUTE_SAVED;
@@ -49,7 +49,7 @@ public class InstituteController {
 
     @PutMapping(Constants.EDIT_INSTITUTE_URL_MAPPING)
     @ResponseBody
-    public String editInstitute(@RequestBody InstituteSaveDto dto, @PathVariable(Constants.INSTITUTE_ID) long id ){
+    public String editInstitute(@Valid @RequestBody InstituteSaveDto dto, @PathVariable(Constants.INSTITUTE_ID) long id ){
        try {
     	instituteService.editInstitute(id,dto);
         return Constants.INSTITUTE_EDITED;
