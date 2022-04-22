@@ -1,9 +1,21 @@
 package com.examly.springapp.web.dto;
+import com.examly.springapp.constants.Constants;
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class AddReviewDto {
-    private long userId;
-    private long courseId;
+    @NotNull(message = Constants.USER_ID_VALIDATION)
+    private Long userId;
+    @NotNull(message = Constants.COURSE_ID_VALIDATION)
+    private Long courseId;
+    @NotEmpty
+    @Size(min=1,max=10000,message =Constants.REVIEW_SIZE_VALIDATION )
     private String message;
+    @NotEmpty
+    @Range(min = 0,max=5, message=Constants.STAR_RATING_VALIDATION)
     private long starRating;
 
     public AddReviewDto() {
