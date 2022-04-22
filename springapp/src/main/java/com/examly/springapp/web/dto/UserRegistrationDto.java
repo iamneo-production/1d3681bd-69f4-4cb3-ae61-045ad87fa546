@@ -1,14 +1,26 @@
 package com.examly.springapp.web.dto;
 
+import com.examly.springapp.constants.Constants;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 public class UserRegistrationDto {
 
+   @Email
+   @NotEmpty
     private String email;
-    private String userName;
-    private String userMobileNumber;
-    private String userPassword;
-    private String userRetypePassword;
+   @NotEmpty
+   @Pattern(regexp = Constants.USER_NAME_REGEX_VALIDATION)
+   private String userName;
+   @NotEmpty
+   @Pattern(regexp = Constants.USER_MOBILE_REGEX_VALIDATION)
+   private String userMobileNumber;
+   @NotEmpty
+   private String userPassword;
+   @NotEmpty
+   private String userRetypePassword;
 
     public UserRegistrationDto() {
     }
