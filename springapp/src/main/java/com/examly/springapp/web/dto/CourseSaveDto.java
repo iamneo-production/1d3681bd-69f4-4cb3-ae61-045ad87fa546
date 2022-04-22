@@ -1,13 +1,34 @@
 package com.examly.springapp.web.dto;
+import com.examly.springapp.constants.Constants;
+import org.springframework.core.ReactiveAdapterRegistry;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 
 public class CourseSaveDto {
+ @NotNull
     private Long instituteId;
+    @NotEmpty
+    @Pattern(regexp = Constants.COURSE_NAME_REGEX_VALIDATION)
     private String courseName;
+    @NotEmpty
     private String courseDescription;
+    @NotEmpty
+    @Pattern(regexp = Constants.COURSE_DURATION_REGEX_VALIDATION)
     private String courseDuration;
+    @NotEmpty
+    @Pattern(regexp = Constants.COURSE_TIMING_REGEX_VALIDATION)
     private String courseTiming;
+    @NotEmpty
+    @Pattern(regexp = Constants.COURSE_STUDENT_COUNT_REGEX_VALIDATION)
     private String courseStudentCount;
+    @NotEmpty
+    @Pattern(regexp = Constants.COURSE_ACADEMIC_YEAR_REGEX_VALIDATION)
     private String courseAcademicYear;
+    @NotEmpty
+    @Pattern(regexp = Constants.COURSE_REQUIRED_PERCENTAGE_REGEX_VALIDATION)
     private String courseRequiredPercentage;
 
     public CourseSaveDto() {
