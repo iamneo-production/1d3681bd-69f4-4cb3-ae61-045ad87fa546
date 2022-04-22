@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import javax.validation.Valid;
 @RestController
 public class CourseController {
     @Autowired
@@ -23,7 +24,7 @@ public class CourseController {
 
     @PostMapping(Constants.ADD_COURSE_URL_MAPPING)
     @ResponseBody
-    public String addCourse(@RequestBody CourseSaveDto courseSaveDto){
+    public String addCourse(@Valid @RequestBody CourseSaveDto courseSaveDto){
         try {
     	 coursesService.saveCourse(courseSaveDto);
     	 return Constants.COURSE_SAVED;
@@ -55,7 +56,7 @@ public class CourseController {
 
     @PutMapping(Constants.EDIT_COURSE_URL_MAPPING)
     @ResponseBody
-    public String editCourse(@RequestBody CourseSaveDto dto, @PathVariable(Constants.COURSE_ID) long id ){
+    public String editCourse(@Valid @RequestBody CourseSaveDto dto, @PathVariable(Constants.COURSE_ID) long id ){
     	try {
         coursesService.editCourse(id,dto);
         return Constants.COURSE_EDITED;
