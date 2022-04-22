@@ -1,29 +1,73 @@
 package com.examly.springapp.web.dto;
+import com.examly.springapp.constants.Constants;
+
+import javax.validation.constraints.*;
 
 public class AdmissionAddressDto {
 
-    //Admission Details
-    private long userId;
-    private long courseId;
+   @NotNull(message = Constants.USER_ID_VALIDATION)
+    @Positive
+    @Digits(integer = 10,fraction = 0)
+    private Long userId;
+    @NotNull(message = Constants.COURSE_ID_VALIDATION)
+    @Positive
+    @Digits(integer = 10,fraction = 0)
+    private Long courseId;
+    @NotEmpty(message = Constants.FIRST_NAME_NON_EMPTY_VALIDATION)
+    @Pattern(regexp = Constants.FIRST_NAME_REGEX_VALIDATION,message = Constants.FIRST_NAME_VALIDATION)
+    @Size(min=1,max = 1000)
     private String firstName;
+    @NotEmpty(message = Constants.LAST_NAME_NON_EMPTY_VALIDATION)
+    @Pattern(regexp = Constants.LAST_NAME_REGEX_VALIDATION,message = Constants.LAST_NAME_VALIDATION)
+    @Size(min=1,max = 1000)
     private String lastName;
+    @NotEmpty(message = Constants.EMAIL_EMPTY_VALIDATION)
+    @Email(message = Constants.EMAIL_VALIDATION)
     private String email;
+    @NotEmpty(message = Constants.MOBILE_EMPTY_VALIDATION)
+    @Size(min=10,max=10,message = Constants.MOBILE_NUMBER_SIZE_VALIDATION)
+    @Pattern(regexp = Constants.MOBILE_NUMBER_REGEX_VALIDATION,message = Constants.MOBILE_NUMBER_VALIDATION)
     private String mobile;
+    @NotEmpty(message = Constants.GENDER_EMPTY_VALIDATION)
     private String gender;
+    @NotEmpty(message = Constants.FATHER_NAME_NON_EMPTY_VALIDATION)
+    @Pattern(regexp = Constants.FATHER_NAME_REGEX_VALIDATION,message = Constants.FATHER_NAME_VALIDATION)
+    @Size(min=1,max = 1000)
     private String fatherName;
+    @NotEmpty(message = Constants.MOTHER_NAME_NON_EMPTY_VALIDATION)
+    @Pattern(regexp = Constants.MOTHER_NAME_REGEX_VALIDATION,message = Constants.MOTHER_NAME_VALIDATION)
+    @Size(min=1,max = 1000)
     private String motherName;
+    @NotEmpty(message = Constants.AGE_EMPTY_VALIDATION)
+    @Pattern(regexp = Constants.AGE_REGEX_VALIDATION,message = Constants.AGE_VALIDATION)
     private String age;
+    @NotEmpty(message = Constants.HSC_NAME_EMPTY_VALIDATION)
+    @Pattern(regexp = Constants.HSC_NAME_REGEX_VALIDATION,message = Constants.HSC_NAME_VALIDATION)
     private String hscName;
-    private long hscMarks;
+    @NotNull(message = Constants.HSC_MARKS_EMPTY_VALIDATION)
+    @Digits(integer = 10,fraction = 0)
+    private Long hscMarks;
     private String eligibility;
 
     //Address Details
 
+   @NotEmpty(message = Constants.HOUSE_NUMBER_EMPTY_VALIDATION)
+   @Pattern(regexp = Constants.HOUSE_NUMBER_REGEX_VALIDATION,message = Constants.HOUSE_NUMBER_VALIDATION)
     private String houseNumber;
-    private String streetNumber;
+    @NotEmpty(message = Constants.STREET_NUMBER_EMPTY_VALIDATION)
+    @Pattern(regexp = Constants.STREET_NUMBER_REGEX_VALIDATION,message = Constants.STREET_NUMBER_VALIDATION)
+   private String streetNumber;
+    @NotEmpty(message = Constants.AREA_NAME_EMPTY_VALIDATION)
+    @Pattern(regexp = Constants.AREA_NAME_REGEX_VALIDATION,message = Constants.AREA_NAME_VALIDATION)
     private String areaName;
+    @NotEmpty(message = Constants.STATE_EMPTY_VALIDATION)
+    @Pattern(regexp = Constants.STATE_REGEX_VALIDATION,message = Constants.STATE_VALIDATION)
     private String state;
+    @NotEmpty(message = Constants.PINCODE_EMPTY_VALIDATION)
+    @Pattern(regexp = Constants.PINCODE_REGEX_VALIDATION,message = Constants.PINCODE_VALIDATION)
     private String pinCode;
+    @NotEmpty(message = Constants.NATIONALITY_EMPTY_VALIDATION)
+    @Pattern(regexp = Constants.NATIONALITY_REGEX_VALIDATION,message = Constants.NATIONALITY_VALIDATION)
     private String nationality;
 
     public AdmissionAddressDto() {
