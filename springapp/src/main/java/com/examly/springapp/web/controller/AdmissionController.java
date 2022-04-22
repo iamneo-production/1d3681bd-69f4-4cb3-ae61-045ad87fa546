@@ -7,6 +7,7 @@ import com.examly.springapp.web.dto.AdmissionSaveDto;
 import com.examly.springapp.web.dto.GetAllAdmissionRequestDto;
 import com.examly.springapp.web.dto.GetAllAppliedAdmissionDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class AdmissionController {
 
     @PostMapping(Constants.ENROLL_URL_MAPPING)
     @ResponseBody
-    public String enroll(@RequestBody AdmissionAddressDto admissionSaveDto){
+    public String enroll(@Valid @RequestBody AdmissionAddressDto admissionSaveDto){
     	try {
         admissionService.saveAdmission(admissionSaveDto);
         return Constants.APPLIED_FOR_ADMISSION;
