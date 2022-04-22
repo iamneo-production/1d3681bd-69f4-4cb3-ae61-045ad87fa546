@@ -174,6 +174,106 @@ public class Constants {
 
     public static final String ADMIN_SIGNUP_URL_MAPPING="/admin/signup";
     public static final String STUDENT_SIGNUP_URL_MAPPING="/user/signup";
+    
+    // Validation Strings
+    public static final String USER_ID_VALIDATION="User Id cannot be empty";
+    public static final String COURSE_ID_VALIDATION="Course Id cannot be empty";
+    // AddReviewDto Validation Strings
+
+    public static final String REVIEW_SIZE_VALIDATION="Review Message should be between 1 and 10000 characters";
+    public static final String STAR_RATING_VALIDATION="Star rating should be between 1 and 5";
+
+    // Admission Address Dto Validation
+    public static final String FIRST_NAME_NON_EMPTY_VALIDATION="First Name can not be Empty";
+    public static final String FIRST_NAME_REGEX_VALIDATION="^[a-zA-Z ]*$";
+    public static final String FIRST_NAME_VALIDATION="First Name should only contain Alphabets";
+
+    public static final String LAST_NAME_NON_EMPTY_VALIDATION="Last Name can not be Empty";
+    public static final String LAST_NAME_REGEX_VALIDATION="^[a-zA-Z ]*$";
+    public static final String LAST_NAME_VALIDATION="Last Name should only contain Alphabets";
+    public static final String EMAIL_VALIDATION="Email format not right";
+    public static final String EMAIL_EMPTY_VALIDATION="Email Id cannot be empty";
+
+    public static final String MOBILE_NUMBER_REGEX_VALIDATION="[0-9]+";
+    public static final String MOBILE_NUMBER_VALIDATION="Mobile Number should only include Digits";
+    public static final String MOBILE_NUMBER_SIZE_VALIDATION="Mobile number should be 10 digit long";
+    public static final String MOBILE_EMPTY_VALIDATION="Mobile Number cannot be empty";
+
+    public static final String GENDER_EMPTY_VALIDATION="Gender cannot be empty";
+
+    public static final String FATHER_NAME_NON_EMPTY_VALIDATION="Father Name can not be Empty";
+    public static final String FATHER_NAME_REGEX_VALIDATION="^[a-zA-Z ]*$";
+    public static final String FATHER_NAME_VALIDATION="Father Name should only contain Alphabets";
+
+    public static final String MOTHER_NAME_NON_EMPTY_VALIDATION="Mother Name can not be Empty";
+    public static final String MOTHER_NAME_REGEX_VALIDATION="^[a-zA-Z ]*$";
+    public static final String MOTHER_NAME_VALIDATION="Mother Name should only contain Alphabets";
+
+    public static final String AGE_EMPTY_VALIDATION="Age cannot be empty";
+    public static final String AGE_REGEX_VALIDATION="[0-9]+";
+    public static final String AGE_VALIDATION="Age should be numeric";
+
+    public static final String HSC_NAME_EMPTY_VALIDATION="HSC Name Cannot be empty";
+    public static final String HSC_NAME_REGEX_VALIDATION="^[a-zA-Z]*$";
+    public static final String HSC_NAME_VALIDATION="HSC Name should contain only alphabets";
+
+    public static final String HSC_MARKS_EMPTY_VALIDATION="HSC Marks Cannot be empty";
+    public static final String HSC_MARKS_REGEX_VALIDATION="[0-9]+";
+    public static final String HSC_MARKS_VALIDATION="HSC Marks should be numeric";
+
+    public static final String HOUSE_NUMBER_EMPTY_VALIDATION="House Number Cannot be empty";
+    public static final String HOUSE_NUMBER_REGEX_VALIDATION="^[a-zA-Z0-9 ]*$"; //Alpha Numeric
+    public static final String HOUSE_NUMBER_VALIDATION="House Number can contain only alphabets and digits";
+    public static final String STREET_NUMBER_EMPTY_VALIDATION="Street Number Cannot be empty";
+
+    public static final String STREET_NUMBER_REGEX_VALIDATION="^[a-zA-Z0-9 ]*$"; //Alpha Numeric
+    public static final String STREET_NUMBER_VALIDATION="Street Number can contain only alphabets and digits";
+
+    public static final String AREA_NAME_EMPTY_VALIDATION="Area Name Cannot be empty";
+
+    public static final String AREA_NAME_REGEX_VALIDATION="^[a-zA-Z0-9 ]*$"; //Alpha Numeric
+    public static final String AREA_NAME_VALIDATION="Area Name can contain only alphabets and digits";
+
+    public static final String STATE_EMPTY_VALIDATION="State Cannot be empty";
+
+    public static final String STATE_REGEX_VALIDATION="^[a-zA-Z ]*$";
+    public static final String STATE_VALIDATION="State can contain only alphabets";
+
+    public static final String NATIONALITY_EMPTY_VALIDATION="Nationality Cannot be empty";
+
+    public static final String NATIONALITY_REGEX_VALIDATION="^[a-zA-Z ]*$";
+    public static final String NATIONALITY_VALIDATION="Nationality can contain only alphabets";
+
+    public static final String PINCODE_EMPTY_VALIDATION="Pin code Cannot be empty";
+
+    public static final String PINCODE_REGEX_VALIDATION="[0-9]+";
+    public static final String PINCODE_VALIDATION="Pincode can contain only digits";
+
+    // Course Controller Validation
+
+    // Course Save Dto Validation
+    public static final String COURSE_NAME_REGEX_VALIDATION="^[a-zA-Z ]*$";
+    public static final String COURSE_DURATION_REGEX_VALIDATION="^[a-zA-Z0-9 ]*$";
+    public static final String COURSE_TIMING_REGEX_VALIDATION="(1[012]|[1-9]):[0-5][0-9](\\s)?(?i)(am|pm)";
+    public static final String COURSE_STUDENT_COUNT_REGEX_VALIDATION="[0-9]+";
+    public static final String COURSE_ACADEMIC_YEAR_REGEX_VALIDATION="[0-9]+";
+    public static final String COURSE_REQUIRED_PERCENTAGE_REGEX_VALIDATION="[0-9]+";
+
+    // Institute Save Dto
+    public static final String INSTITUTE_NAME_REGEX_VALIDATION="^[a-zA-Z ]*$";
+    public static final String INSTITUTE_DESCRIPTION_REGEX_VALIDATION="^[a-zA-Z0-9 ]*$";
+    public static final String INSTITUTE_CITY_REGEX_VALIDATION="^[a-zA-Z ]*$";
+    public static final String INSTITUTE_STATE_REGEX_VALIDATION="^[a-zA-Z ]*$";
+    public static final String INSTITUTE_MOBILE_NUMBER_REGEX_VALIDATION="[0-9]+";
+
+    // UserRegistrationDto Validation
+
+    public static final String USER_NAME_REGEX_VALIDATION="^[a-zA-Z ]*$";
+    public static final String USER_MOBILE_REGEX_VALIDATION="[0-9]+";
+
+    // Checking password for equality
+
+    public static final String BOTH_PASSWORDS_NOT_EQUAL="Password and Retype Password are not same";
 
 
 
