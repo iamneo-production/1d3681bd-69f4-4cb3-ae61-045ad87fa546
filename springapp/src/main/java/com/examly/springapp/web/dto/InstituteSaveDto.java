@@ -1,17 +1,34 @@
 package com.examly.springapp.web.dto;
+import com.examly.springapp.constants.Constants;
+
+import javax.validation.constraints.*;
 
 import javax.validation.constraints.Email;
 
 public class InstituteSaveDto {
 
 
+   @NotEmpty
+    @Pattern(regexp = Constants.INSTITUTE_NAME_REGEX_VALIDATION)
     private String instituteName;
+    @NotEmpty
+    @Pattern(regexp =Constants.INSTITUTE_DESCRIPTION_REGEX_VALIDATION )
     private String instituteDescription;
+    @NotEmpty
+    @Pattern(regexp = Constants.INSTITUTE_CITY_REGEX_VALIDATION)
     private String instituteCity;
+    @NotEmpty
+    @Pattern(regexp = Constants.INSTITUTE_STATE_REGEX_VALIDATION)
     private String instituteState;
+    @NotEmpty
+    @Email
     private String instituteEmail;
+    @NotEmpty
+    @Size(min=10,max=10)
+    @Pattern(regexp = Constants.INSTITUTE_MOBILE_NUMBER_REGEX_VALIDATION)
     private String instituteMobile;
-    private int nirfRank;
+    @NotNull
+    private Integer nirfRank;
 
     public InstituteSaveDto() {
     }
