@@ -8,6 +8,7 @@ import com.examly.springapp.web.dto.GetReviewsDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.examly.springapp.constants.Constants;
+import javax.validation.Valid;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class ReviewController {
 
     @PostMapping(Constants.ADD_REVIEW_URL_MAPPING)
     @ResponseBody
-    public String addReview(@RequestBody AddReviewDto dto){
+    public String addReview(@Valid @RequestBody AddReviewDto dto){
         try {
         return reviewService.addReview(dto);
         }
@@ -31,7 +32,7 @@ public class ReviewController {
 
     @PutMapping(Constants.EDIT_REVIEW_URL_MAPPING)
     @ResponseBody
-    public String editReview(@RequestBody AddReviewDto dto, @PathVariable(Constants.REVIEW_ID) long id){
+    public String editReview(@Valid @RequestBody AddReviewDto dto, @PathVariable(Constants.REVIEW_ID) long id){
     	try {
         return reviewService.editReview(dto,id);
     	}
