@@ -11,6 +11,18 @@ function EnrolledCourseCard({ enrolleddata }) {
           <div className="container">
             <Grid container className="rowgrid" item xs={12} sm={4} md={12}>
               <Grid className="gridelement">
+                <p>First name :{<strong> {x.firstName} </strong>}</p>
+              </Grid>
+              <Grid className="gridelement">
+                <p>Last Name :{<strong>{x.lastName} </strong>} </p>
+              </Grid>
+              <Grid className="gridelement">
+                <p> Email Id : {<strong>{x.email} </strong>}</p>
+              </Grid>
+            </Grid>
+
+            <Grid container className="rowgrid" item xs={12} sm={4} md={12}>
+              <Grid className="gridelement">
                 <p>course name :{x.courseName}</p>
               </Grid>
               <Grid className="gridelement">

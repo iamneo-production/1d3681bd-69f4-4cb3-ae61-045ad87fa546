@@ -14,16 +14,22 @@ import Typography from "@mui/material/Typography";
 // import  from '../Components/InstituteCard';
 import Rating from "@mui/material/Rating";
 import TextField from "@mui/material/TextField";
+import Review from "./Review";
+import RateReviewIcon from "@mui/icons-material/RateReview";
+import GetRating from "./GetRating";
 
 import { Link, Outlet } from "react-router-dom";
 import CourseSearchFilter from "../Components/CourseSearchFilter";
 import HeaderStudent from "../Components/HeaderStudent";
+import zIndex from "@mui/material/styles/zIndex";
 
 function Course(value1) {
   const [data, setData] = useState([]);
   const [no_courses, setNo_courses] = useState(0);
+  const [value, setValue] = useState(0);
   const [reviewarr, setReviewarr] = useState([]);
   const [ratevalue, setRateValue] = React.useState(2);
+  const [expandReview, setExpandReview] = useState(false);
   useEffect(() => {
     getcourses();
     //getallreviews();
@@ -34,7 +40,7 @@ function Course(value1) {
   // }, [ratevalue]);
 
   function getcourses() {
-    fetch(value1.value1+"admin/viewCourses")
+    fetch(value1.value1 + "admin/viewCourses")
       .then((response) => response.json())
       .then((p) => {
         setData(p);
@@ -55,7 +61,7 @@ function Course(value1) {
     var star = 0;
     console.log("no of courses " + no_courses);
     for (var i = 1; i <= no_courses; i++) {
-      fetch(value1.value1+`getReviewsByCourseId/${i}`)
+      fetch(value1.value1 + `getReviewsByCourseId/${i}`)
         .then((response) => response.json())
         .then((p) => {
           console.log(p);
@@ -147,11 +153,14 @@ function Course(value1) {
                 </Grid>
 
                 <Grid className="gridelement">
-                  <p>Course Name : {datas.courseName}</p>
+                  <p>Course Name :{<strong>{datas.courseName}</strong>}</p>
                 </Grid>
 
                 <Grid className="gridelement">
                   <p> Course Duration : {datas.courseDuration}</p>
+                </Grid>
+                <Grid className="gridelement">
+                  <p>Course Timing : {datas.courseTiming}</p>
                 </Grid>
               </Grid>
 
@@ -164,9 +173,9 @@ function Course(value1) {
                 sm={4}
                 md={12}
               >
-                <Grid className="gridelement">
+                {/* <Grid className="gridelement">
                   <p>Course Timing : {datas.courseTiming}</p>
-                </Grid>
+                </Grid> */}
 
                 <Grid className="gridelement">
                   <p>Students enrolled : {datas.courseStudentCount}</p>
@@ -175,9 +184,6 @@ function Course(value1) {
                 <Grid className="gridelement">
                   <p>Academic year : {datas.courseAcademicYear}</p>
                 </Grid>
-              </Grid>
-
-              <Grid container className="rowgrid" item xs={12} sm={4} md={12}>
                 <Grid className="gridelement">
                   <p>Percentage Required : {datas.courseRequiredPercentage}</p>
                 </Grid>
@@ -186,53 +192,103 @@ function Course(value1) {
                 </Grid>
               </Grid>
 
-              <Grid container className="rowgrid" item xs={12} sm={4} md={12}>
+              <Grid
+                container
+                className="rowgrid grid-bottom-row"
+                item
+                xs={12}
+                sm={4}
+                md={12}
+              >
                 <Grid className="gridelement">
                   <p>Institute Name : {datas.instituteName}</p>
                 </Grid>
-              </Grid>
-            </div>
-
-            <div className="course-card-btns-box">
-              <Link
-                to="/user/EnrollCourse"
-                style={{ color: "white", textDecoration: "none" }}
-              >
-                <Button
-                  variant="outlined"
-                  startIcon={<AddBox />}
-                  style={{ marginLeft: "10px", zIndex: "-1" }}
-                >
-                  Enroll
-                </Button>
-              </Link>
-              <div>
-                <box>
-                  <Typography>Overall Rating</Typography>
-                  <Rating
-                    name="read-only"
-                    // value={getreview(datas.courseId)}
-                    value={2}
-                    readOnly
-                  />
-                  {/* <Button>Review</Button> */}
-                </box>
-              </div>
-              <div className="addreview">
-                <div>
-                  <Typography> Rate & Review</Typography>
-                  <Rating
-                    name="simple-controlled"
-                    value={null}
-                    onChange={(event, newValue) => {
-                      setRateValue(newValue);
+                <div className="course-card-btns-box">
+                  <Link
+                    to="/user/EnrollCourse"
+                    style={{ color: "white", textDecoration: "none" }}
+                  >
+                    <Button
+                      variant="outlined"
+                      startIcon={<AddBox />}
+                      style={{ marginLeft: "100px", zIndex: "-1" }}
+                    >
+                      Enroll
+                    </Button>
+                  </Link>
+                  <Link
+                    to="/user/ReviewForm"
+                    style={{
+                      color: "white",
+                      textDecoration: "none",
+                      marginLeft: "100px",
+                      marginRight: "50px",
+                      // zIndex: "-1",
                     }}
-                  />
-                </div>
+                  >
+                    <Button
+                      className="zindex"
+                      startIcon={<RateReviewIcon />}
+                      // style={{ zIndex: "-1" }}
+
+                      variant="outlined"
+
+                      // style={{ marginLeft: "10px", zIndex: "-1" }}
+                    >
+                      Add Reviews
+                    </Button>
+                  </Link>
+                  {/* <div>
+                <box> */}
+                  {/* <Typography>Overall Rating</Typography> */}
+                  {/* <Rating */}
+                  {/* //name="read-only"
+                    // value={getreview(datas.courseId)}
+                    //value={2}
+                    //readOnly
+                  /> */}
+                  {/* <Button>Review</Button> */}
+                  {/* </box>
+              </div> */}
+                  {/* <GetRating courseid={1} /> */}
+                  {/* <div className="addreview">
+                <div> */}
+                  {/* <Typography> Rate & Review</Typography>
+                  <Rating */}
+                  {/* // name="simple-controlled"
+                    // value={value}
+                    // onChange={(event, newValue) => { */}
+                  {/* //   setRateValue(newValue);
+                    // }} */}
+                  {/* /> */}
+                  {/* </div>
                 <div className="review-des">
                   <textarea className="review-des-text"></textarea>
                 </div>
-              </div>
+              </div> */}
+                </div>
+              </Grid>
+
+              <Grid
+                container
+                className="rowgrid"
+                item
+                xs={12}
+                sm={4}
+                md={12}
+              ></Grid>
+            </div>
+
+            <hr></hr>
+            <div>
+              <p>Reviews</p>
+              <Review
+                className="zindex"
+                value1={value1}
+                courseid={datas.courseId}
+                style={{ zIndex: -1 }}
+              />
+              {/* {expandReview ? <Review value1={value1} courseid={1} /> : ""} */}
             </div>
           </div>
         ))}
