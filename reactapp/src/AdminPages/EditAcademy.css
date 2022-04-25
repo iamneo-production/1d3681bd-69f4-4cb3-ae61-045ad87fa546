@@ -23,18 +23,18 @@ input{
 
 
 .row1{
-    margin-top: 25px;
+    margin-top: 15px;
     padding: 10px;
    
     /* width: "600px"; */
     width: 48%;
     height:30px;
-    margin-left:30px ;
+    /* margin-left:30px ; */
     /* height: 200px; */
     /* height:30px; */
 }
 .row{
-    margin-top: "10px";
+    /* margin-top: "10px"; */
     width: 100%;
     /* width:20px; */
     height: 100px;
@@ -42,9 +42,23 @@ input{
 }
 
 .btnadd{
-    margin: 30px;
-    padding: 10px;
+    margin-top: 30px;
+    /* padding: 10px;
     position: relative;
-    width: 200px;
-    left: 40%;
+    width: 200px; */
+    /* left: 40%; */
+}
+.enroll_form_container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    /* border: 1px solid black; */
+}
+.enroll_form_container-below{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    width: 60%;
 }

@@ -1,120 +1,243 @@
-import React, { Component } from 'react';
+import Header from "../Components/Header";
 
-import Button from '@mui/material/Button';
-import "./ViewCourse.css";
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Delete from '@mui/icons-material/Delete';
-import Edit from '@mui/icons-material/Edit';
-import Grid from '@mui/material/Grid';
-import Add from '@mui/icons-material/Add';
-import Typography from '@mui/material/Typography';
-import Header from'../Components/Header';
-import {Link,Outlet,} from  "react-router-dom";
-import CourseSearchFilter from '../Components/CourseSearchFilter';
+import Button from "@mui/material/Button";
+import { useState, React, useEffect } from "react";
 
+import Grid from "@mui/material/Grid";
 
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import "./DisplayUser.css";
+// import Link from '@mui/material/Link'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  useNavigate,
+} from "react-router-dom";
+import IconButton from "@mui/material/IconButton";
+import Delete from "@mui/icons-material/Delete";
+import Edit from "@mui/icons-material/Edit";
+import Add from "@mui/icons-material/Add";
+import Search from "@mui/icons-material/Search";
+import { Table, TableHead, TableRow, TableBody } from "@mui/material";
 
+// import React, { Component } from 'react'
 
-function ViewCourse(props) {
+import {
+  BackspaceOutlined,
+  CountertopsOutlined,
+  DeleteForeverOutlined,
+  EditAttributes,
+} from "@mui/icons-material";
+// import '../AdminPages/DisplayUser.css';
+
+const ViewCourse = (value1) => {
+  // const [courseName,setname]=useState("");
+  //   const [courseDescription,setdescription]=useState("");
+  //   const [courseTiming,settiming]=useState("");
+  //   const [courseStudentCount,setcount]=useState("");
+  //   const [courseAcademicYear,setyear]=useState("");
+  //   const [courseRequiredPercentage,setpercentage]=useState("");
+  //   const [courseDuration,setduration]=useState("");
+  //   const [courseId,setid]=useState("");
+
+  const [data, setData] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    getusers();
+  }, []);
+
+  function getusers() {
+    fetch(value1.value1 + "admin/viewCourses")
+      .then((response) => response.json())
+      .then((p) => setData(p));
+  }
+
+  function deleteUser(courseId) {
+    // alert(id)
+    fetch(value1.value1 + `admin/deleteCourse/${courseId}`, {
+      method: "DELETE",
+    }).then((response) => {
+      response
+        .json()
+        .then((resp) => {
+          console.warn();
+          getusers();
+        })
+        .then(() => {
+          window.location.href = "/admin/ViewCourse";
+        });
+    });
+  }
+
+  const set = (data) => {
+    console.log(data);
+    // console.log(data.courseId)
+    let {
+      courseName,
+      courseDuration,
+      courseDescription,
+      courseTiming,
+      courseStudentCount,
+      courseAcademicYear,
+      courseRequiredPercentage,
+      courseId,
+    } = data;
+    localStorage.setItem("CourseId", courseId);
+    console.log(courseId);
+    localStorage.setItem("CourseName", courseName);
+    localStorage.setItem("CourseDescription", courseDescription);
+    localStorage.setItem("CourseTiming", courseTiming);
+    localStorage.setItem("CourseStudentCount", courseStudentCount);
+    localStorage.setItem("CourseAcademicYear", courseAcademicYear);
+    localStorage.setItem("CourseRequiredPercentage", courseRequiredPercentage);
+    localStorage.setItem("CourseDuration", courseDuration);
+  };
+
+  //id passde to edit course component
+  function addid(course_id) {
+    console.log("inside addid course");
+    console.log(course_id);
+    const toEditCourse = () => {
+      console.log(course_id);
+      navigate("/admin/EditCourses", {
+        state: { currentid: { course_id } },
+      });
+    };
+    toEditCourse();
+  }
+
   return (
     <div>
+      <Header />
 
-<Header/>
-
-    <CourseSearchFilter />
-
-                
-                <div  className='card1'>
-            <Card  className="cardstyle" 
-                  sx={{ height: '15%',width:"40%", display: 'flex', flexDirection: 'column',backgroundColor:'#dbaad5'}}
-                >
-               
-                   
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    {/* <Typography gutterBottom variant="h5" style={{textAlign:"center"}} component="h2">
-                      Heading
-                    </Typography> */}
-                    
-                    <Typography style={{textAlign:"center"}}>
-                    <Grid container  className="rowgrid"  item xs={12} sm={4} md={12}>
-                  <Grid  className="gridelement" >
-                  <p>courseId :</p>
-                  </Grid>
-                  <Grid  className="gridelement">
-                  <p>Course Name :</p>
-                  </Grid>
-                  <Grid   className="gridelement">
-                  <p>Duration :</p>
-                  </Grid>
-                 
-               </Grid>
-
-               <Grid container className="rowgrid"  item xs={12} sm={4} md={12}>
-                  <Grid  className="gridelement">
-                 <p>Students Enrolled:</p>
-                  </Grid>
-                  <Grid className="gridelement" >
-                  <p  >Course Year:</p>
-                  </Grid>
-                  <Grid className="gridelement">
-                  <p>Type:</p>
-                  </Grid>
-                 
-               </Grid>
-
-               <Grid container className="rowgrid"  item xs={12} sm={4} md={12}>
-                  <Grid  className="gridelement" >
-                 <p>Institute Name:</p>
-                  </Grid>
-                  </Grid>
-                 
-                    </Typography>
-                  </CardContent>  
-                </Card>
-                <div>
-                <Grid container className="btngrid zindex"  item xs={12} sm={4} md={12}>
-               
-                  <Grid className="btngrid">
-                  <Link to="/admin/EditCourses" style={{color:"white",textDecoration:"none"}}  target={"_blank"}>
-                  <Button  variant="outlined" style={{margin:"5px"}} id="addCourse" startIcon={<Edit />} color="primary">Edit </Button> 
-                 </Link>
-
-                  
-                  </Grid>
-                  <Grid className="btngrid">
-
-                  <Link to="/admin/DeleteCourses" style={{color:"white",textDecoration:"none"}}  target={"_blank"}>
-                  <Button  variant="outlined" style={{margin:"5px"}} id="addCourse" startIcon={<Delete />} color="error">Delete</Button> 
-                 </Link>
-                  
-                  </Grid>  
-                  </Grid> 
-                </div>
+      <div className="course-search-and-filter">
+        <div className="course-search">
+          <input
+            className="course-search-input"
+            type="text"
+            name="course"
+            placeholder="Search Course"
+          ></input>
+          <Button variant="outlined" id="searchCourse" className="btn">
+            {" "}
+            Search
+          </Button>
         </div>
+        <div className="course-filter">
+          <div className="filter1">Filter By</div>
 
-        <div className='btnadd'>
-        {/* <Link to="/admin/AddCourses" style={{color:"white",textDecoration:"none"}}  target={"_blank"}>
-        <Button  variant="contained" style={{margin:"5px"}} id="addCourse" startIcon={<Add />} color="primary">Add Course </Button>
-                 </Link> */}
+          <Button variant="outlined" className="course-filter-elem">
+            {" "}
+            Institute Name
+          </Button>
+          {/* <Button variant="outlined" className="course-filter-elem"> Student Name</Button> */}
+          <Button variant="outlined" className="course-filter-elem">
+            {" "}
+            Course
+          </Button>
+        </div>
+      </div>
 
-                 <Link   to="/admin/AddCourses" style={{color:"white",textDecoration:"none"}} target={"_blank"}>
-                <Button  variant="contained" style={{margin:"5px"}} startIcon={<Add />} color="primary">Add Course </Button> 
-                </Link>
-        
-        {/* <Link to="/admin/AddCourses" style={{color:"white",textDecoration:"none"}}  target={"_blank"}>
-        <Button  variant="contained" style={{margin:"5px"}} id="addCourse" startIcon={<Add />} color="primary">Add Course </Button> 
-                 </Link>       */}
+      <table className=" zindex table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>CourseId</th>
+            <th>CourseName</th>
+            <th>InstituteName</th>
+            <th>CourseDescription</th>
+            <th>Duration</th>
+            <th>Timing</th>
+            <th>studentEnrolled</th>
+            <th>AcademicYear</th>
+            <th>RequiredPercentage</th>
 
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((datas) => (
+            <tr key={datas.courseId}>
+              <td>{datas.courseId} </td>
+              <td>{datas.courseName}</td>
+              <td>{datas.instituteName}</td>
+              <td>{datas.courseDescription}</td>
+              <td>{datas.courseDuration}</td>
+              <td>{datas.courseTiming}</td>
+              <td> {datas.courseStudentCount}</td>
+              <td>{datas.courseAcademicYear}</td>
+              <td>{datas.courseRequiredPercentage}</td>
 
- 
-  </div>
-  <Outlet />
-            </div>
+              <td>
+                {/* <Link
+                  to="/admin/EditCourses/"
+                  style={{ color: "Black", textDecoration: "none" }}
+                > */}
+                <a
+                  onClick={() => {
+                    console.log("datas before passs :");
+                    console.log(datas.courseId);
+                    addid(datas.courseId);
+                  }}
+                >
+                  <button
+                    className="zindex"
+                    // onClick={() => set(data)}
+                    variant="contained"
+                    style={{
+                      margin: "5px",
+                      backgroundColor: "blue",
+                      color: "white",
+                    }}
+                    endIcon={<EditAttributes />}
+                    color="primary"
+                  >
+                    Edit <Edit />{" "}
+                  </button>
+                </a>
+                {/* </Link> */}
+                <button
+                  className="zindex"
+                  variant="contained"
+                  style={{
+                    margin: "5px",
+                    backgroundColor: "red",
+                    color: "white",
+                  }}
+                  endIcon={<DeleteForeverOutlined />}
+                  onClick={() => deleteUser(datas.courseId)}
+                  color="primary"
+                >
+                  Delete <DeleteForeverOutlined />
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <div className="btnadd">
+        <Link
+          to="/admin/AddCourses"
+          style={{ color: "white", textDecoration: "none" }}
+        >
+          <Button
+            className="btn btn-submit"
+            type="submit"
+            variant="contained"
+            style={{ margin: "5px" }}
+            startIcon={<Add />}
+            color="primary"
+          >
+            Add Course
+          </Button>
+        </Link>
+      </div>
+      <Outlet />
+    </div>
   );
-}
-
+};
 export default ViewCourse;
-

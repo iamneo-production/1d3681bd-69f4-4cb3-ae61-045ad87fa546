@@ -25,6 +25,7 @@ import { sizeWidth } from '@mui/system';
 
 
 import{BrowserRouter as Router, Routes,Route,Link,Outlet,} from "react-router-dom";
+import { NotificationImportant } from "@mui/icons-material";
 
 
 function Header() {
@@ -65,12 +66,22 @@ function Header() {
       </div>
       <div className="nav">
         <div className="nav-logout">
-          <Logout sx={{ fontSize: 35 }} /> <div>logout</div>
+          <Logout
+          
+          onClick={()=>{
+            localStorage.removeItem('user');
+            localStorage.removeItem('admin');
+            window.location.href="/Login"
+        }}
+
+          sx={{ fontSize: 35 }} /> <div>logout</div>
           
         </div>
         <div className="nav-profile">
-          <Account sx={{ fontSize: 35 }} />
-          <div>Profile</div>
+          {/* <Account sx={{ fontSize: 35 }} /> */}
+         
+          <NotificationImportant   sx={{ fontSize: 35 }} />
+          <div>User Id:{localStorage.getItem('admin') }</div> 
         </div>
       </div>
     </header>
@@ -88,7 +99,7 @@ function Header() {
            
             
             <grid item xs={4} md={4} style={gridheading}>
-            <Link to=""  style={{color:"white", textDecoration:"none"} } underline='none'>
+            <Link to="/admin/ViewInstitute"  style={{color:"white", textDecoration:"none"} } underline='none'>
               <IconButton className="options-below-nav-items options-institute" edge="start" ariel-label="menu" sx={{mr:2}}>Institute</IconButton>
               </Link>
               </grid>
@@ -104,7 +115,19 @@ function Header() {
                  </Link>
             </grid>
            
-          
+           {/* <grid item xs={4} md={4} style={grid1}><IconButton edge="start" color="inherit" ariel-label="menu" sx={{mr:2}}>
+           <Link to=""  style={{color:"white"}} underline='none'>
+              <Account style={icon}  className='icon1' style={style1}/> 
+          </Link>
+             </IconButton>
+             </grid> */}
+            
+             {/* <grid item xs={4} md={4} style={grid1}><Link to="" style={{color:"white"}} style={{textDecoration:"none"}} target={"_blank"}  id="logout" underline='none'><IconButton edge="start" style={{color:"white"}} ariel-label="menu" sx={{mr:2}}>
+             Logout
+               </IconButton>
+               </Link>
+               </grid> */}
+           
            
 
           </grid>
@@ -118,7 +141,7 @@ function Header() {
        
         
       </div>
-      <Outlet />
+      {/* <Outlet /> */}
       
         </div>
     );

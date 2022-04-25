@@ -1,12 +1,14 @@
 import Footer from './Footer';
 import Header from './Header';
-import InstituteCard from './InstituteCard';
+// import InstituteCard from './InstituteCard';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import "./HomePage.css";
 import {Link,Outlet,} from  "react-router-dom";
 import Add from '@mui/icons-material/Add';
 import CourseSearchFilter from './CourseSearchFilter';
+import Card from './Card';
+import Course from '../UserPages/Course';
 
 function HomePage(){
     let grida={
@@ -52,8 +54,8 @@ function HomePage(){
             </form> */}
 
 {/* <CourseSearchFilter firstsearchbar="Location" secondsearchbar="Institute" thirdsearchbar="Course"/> */}
-<Header/>
 
+<Header/>
 
 <div className="course-search-and-filter">
       <div className="course-search">
@@ -77,20 +79,21 @@ function HomePage(){
     </div>
 
 
-            <Grid  container className="containercard" rowSpacing={1} columnSpacing={{xs:1,sm:2,md:3}}>
-            <Grid className="containercard" id="adminInstituteGrid1" item xs={12} md={4}>
-                <InstituteCard />
+            {/* <Grid  container  rowSpacing={1} columnSpacing={{xs:1,sm:2,md:3}}> */}
+            {/* <Grid  id="adminInstituteGrid1" item xs={12} md={4}> */}
+              
+              <Card/>
+                {/* </Grid> */}
+                {/* <Grid  id="adminInstituteGrid2" item xs={12} md={4}>
+               <Card/>
                 </Grid>
-                <Grid className='containercard' id="adminInstituteGrid2" item xs={12} md={4}>
-                <InstituteCard />
-                </Grid>
-                <Grid className='containercard' id="adminInstituteGrid3" item xs={12} md={4}>
-                <InstituteCard />
-                </Grid>
-                </Grid>
+                <Grid  id="adminInstituteGrid3" item xs={12} md={4}>
+               <Card/>
+                </Grid>  */}
+                 {/* </Grid> */}
             
                 <div className='btnadd'>
-<Link   to="/admin/addAcademy" style={{color:"white",textDecoration:"none"}} target={"_blank"}>
+<Link   to="/admin/addAcademy" style={{color:"white",textDecoration:"none"}} >
 <Button  variant="contained" style={{margin:"5px"}} startIcon={<Add />} color="primary">Add Institute </Button> 
   </Link>
   </div>
